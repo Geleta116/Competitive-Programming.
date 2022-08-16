@@ -1,0 +1,175 @@
+#THIS IS THE SOLUTION OF THE FIZZBUZZ OF WEEK 1
+class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        lst = []
+
+        for j in range (1,n+1):
+            lst.append(j)
+
+
+   
+        for i in range(len(lst)):
+            if lst[i]%3==0 and lst[i]%5 != 0:
+                lst[i] = "Fizz"
+            elif lst[i]%3!=0 and lst[i]%5== 0:
+                lst[i] = "Buzz"
+            elif lst[i]%3==0 and lst[i]%5== 0:
+                lst[i] ="FizzBuzz" 
+            elif lst[i]%3!=0 and lst[i]%5!= 0:    
+                lst[i] = str(lst[i])
+    
+        return lst
+
+
+
+
+
+
+
+
+#THIS IS THE SOLUTION FOR MY DOMINO PILING QUESTION
+x, y = map(int, input().split())
+print((x*y)//2)
+
+
+#THIS IS THE SOLUTION FOR THE BUBBLE SORT OF WEEK 1
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'countSwaps' function below.
+#
+# The function accepts INTEGER_ARRAY a as parameter.
+#
+
+def countSwaps(a):
+    # Write your code here
+    count = 0
+    for i in range(len(a)):
+        for j in range(len(a)-1):
+            if a[j]> a[j+1]:
+                 a[j], a[j+1] = a[j+1],a[j]
+                 count +=1
+
+    print("Array is sorted in" ,count,"swaps.")
+    print("First Element:" , a[0])
+    print("Last Element:", a[-1])
+    
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    a = list(map(int, input().rstrip().split()))
+
+    countSwaps(a)
+
+
+
+
+
+
+
+
+
+
+
+
+#THIS IS THE ANSWER FOR THE GRADING STUDENT QUESTION 
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'gradingStudents' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts INTEGER_ARRAY grades as parameter.
+#
+
+def gradingStudents(grades):
+    # Write your code here
+    x = [40,45,50,55,60,65,70,75,80,85,90,95,100]
+    for i in range(len(grades)):
+        if grades[i]>37:
+            for j in range(len(x)):
+                if grades[i]<x[j] and x[j]-grades[i]<3:
+                    grades[i] = x[j]
+    
+                    
+    return(grades)
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    grades_count = int(input().strip())
+
+    grades = []
+
+    for _ in range(grades_count):
+        grades_item = int(input().strip())
+        grades.append(grades_item)
+
+    result = gradingStudents(grades)
+
+    fptr.write('\n'.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+
+
+
+
+
+
+
+
+
+#THIS IS THE ANSWER FOR THE insertion sort part 1 
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'insertionSort1' function below.
+#
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER_ARRAY arr
+#
+
+def insertionSort1(n, arr):
+    tobe = arr[n-1]
+    j = n-2
+    while j>=0 and arr[j]>tobe:
+        arr[j+1]= arr[j]
+        j=j-1
+        print(*arr)
+    arr[j+1]= tobe
+    print(*arr)
+    
+    
+    # Write your code here
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort1(n, arr)
