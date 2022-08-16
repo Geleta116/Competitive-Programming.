@@ -6,7 +6,6 @@ class Solution:
             lst.append(j)
 
 
-   
         for i in range(len(lst)):
             if lst[i]%3==0 and lst[i]%5 != 0:
                 lst[i] = "Fizz"
