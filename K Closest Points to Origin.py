@@ -11,9 +11,9 @@ def kClosest(points,k):
     Final = []
     for index in range(k):
         Final.append(dictionary[index])
-    print(Final)
+    return (Final)
     
   
 
-kClosest([[1,3],[-2,2],[0,0],[0,0],[-2,-2]],0)
+
 
