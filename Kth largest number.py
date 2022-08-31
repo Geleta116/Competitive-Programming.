@@ -8,7 +8,7 @@ class Solution:
 
 '''
 The other algorithm I tried is this one the only problem with it is the time limit
-exceeded error
+exceeded error However it has passed about 207 test cases
 
 class Solution:
     def quick(nums):
