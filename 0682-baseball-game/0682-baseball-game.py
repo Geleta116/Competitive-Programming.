@@ -11,11 +11,14 @@ class Solution:
                 st.append(2*p1)
                   
             elif i=='+':
-                st.append(st[-1]+st[-2])        
+                p2 = st.pop()
+                p3 = st.pop()
+                st.append(p3)
+                st.append(p2)
+                st.append(p2+p3)        
             else:
                 st.append(int(i))
         
         return sum(st)
             
        
-        
