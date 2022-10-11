@@ -9,15 +9,15 @@ class Solution:
         #I could have used the Counter function 
         temp_dic = sorted(count.keys())
         out = 0
+        
         for i,n in enumerate(temp_dic):
             j = i 
             k = len(temp_dic)-1
-            temp_targ = target - n
             while j<=k:
                 
-                if temp_dic[j]+temp_dic[k]<temp_targ:
+                if temp_dic[j]+temp_dic[k]<target - temp_dic[i]:
                     j+=1
-                elif temp_dic[j]+temp_dic[k]>temp_targ:
+                elif temp_dic[j]+temp_dic[k]>target - temp_dic[i]:
                     k-=1
                 else:
                     if i<j<k:
