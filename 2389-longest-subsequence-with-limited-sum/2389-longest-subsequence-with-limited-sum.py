@@ -5,24 +5,11 @@ class Solution:
         for i in range(len(nums)):
             pre.append(pre[i]+nums[i])
         pre = pre[1::]
-        j = 0
         out = []
-        while j<len(queries):
-            l = 0
-            c = 0
-            while l<len(pre):
-                if pre[l] < queries[j]:
-                    l+=1
-                    c+=1
-                elif pre[l]>queries[j]:
-                    break
-                else:
-                    c+=1
-                    break
-            out.append(c)
-            c = 0
-            j+=1
+        for j in queries:
+            out.append(bisect.bisect_right(pre,j))
         return out
+            
                 
                     
                     
