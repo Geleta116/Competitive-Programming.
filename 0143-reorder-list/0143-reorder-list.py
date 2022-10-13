@@ -6,8 +6,8 @@
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
         slow = head
-        fast = head
-        while fast.next and fast.next.next:
+        fast = head.next
+        while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
         
