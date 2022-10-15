@@ -4,14 +4,18 @@ class Solution:
         x = "Push"
         y = "Pop"
         #target = [1,3], n = [1,2,3]
-        for i in range(1,n+1):
-            if i in target:
+        i = 0
+        while i < n:
+            if i+1 in target:
                 out.append(x)
+                
             else:
+                if i == target[-1]:
+                    break
                 out.append(x)
                 out.append(y)
-            if i == target[-1]:
-                break
+            i+=1
         return out
+        
             
         
