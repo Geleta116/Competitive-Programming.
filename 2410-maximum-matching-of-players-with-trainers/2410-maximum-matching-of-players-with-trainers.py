@@ -6,14 +6,14 @@ class Solution:
         print(trainers)
         out = 0
         j = 0
-        for i in range(len(players)):
-            
-            for k in range(j,len(trainers)):
-                if players[i]<=trainers[k]:
+        i = 0
+        while i<len(players) and j<len(trainers):
+                if players[i]<=trainers[j]:
                     out += 1
-                    j = k+1
-                    break
-            #print(out)
-            print(j)
+                    j +=1
+                    i+=1
+                else:
+                    j+=1
+            
         return out
         
