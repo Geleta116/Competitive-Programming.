@@ -2,17 +2,16 @@ class Solution:
     def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
         out = []
         temp = []
-        m = len(matrix[0])
-        d = 0
-        while d < m:
-            i = 0
-            while i<len(matrix):
-                temp.append(matrix[i][d])
-                i+=1
+        len_m_item = len(matrix[0])
+        cur_index = 0
+        while cur_index < len_m_item:
+            item = 0
+            while item<len(matrix):
+                temp.append(matrix[item][cur_index])
+                item+=1
             out.append(temp)
             temp = []
-            d+=1
+            cur_index+=1
         return out
-
 
     
