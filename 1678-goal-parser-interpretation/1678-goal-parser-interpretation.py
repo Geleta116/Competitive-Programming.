@@ -1,21 +1,21 @@
 class Solution:
     def interpret(self, command: str) -> str:
-        i = 0
-        j = 1
+        index_1 = 0
+        index_2 = 1
         out = ""
-        while i<len(command):
-            if command[i]=="G":
+        while index_1<len(command):
+            if command[index_1]=="G":
                 out += "G"
-                i+=1
-                j+=1
-            elif command[i]=="(":
-                if command[j]==")":
+                index_1+=1
+                index_2+=1
+            elif command[index_1]=="(":
+                if command[index_2]==")":
                     out += "o"
-                    i+=2
-                    j +=2
-                elif command[j] == "a":
+                    index_1+=2
+                    index_2 +=2
+                elif command[index_2] == "a":
                     out += "al"
-                    i+=4
-                    j+=4
+                    index_1+=4
+                    index_2+=4
         return out
         
