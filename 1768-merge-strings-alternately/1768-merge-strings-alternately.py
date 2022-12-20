@@ -5,24 +5,24 @@ class Solution:
         len_word2 = len(word2)
         if len_word1 > len_word2:
             # i = 0
-            j = 0
-            k = 0
-            while k<len_word2:
-                merg += word1[j]
-                j+=1
-                merg += word2[k]
-                k+=1
-            merg += word1[j:]
+            word_1_iterator = 0
+            word_2_iterator = 0
+            while word_2_iterator<len_word2:
+                merg += word1[word_1_iterator]
+                word_1_iterator+=1
+                merg += word2[word_2_iterator]
+                word_2_iterator+=1
+            merg += word1[word_1_iterator:]
             return merg
         else:
-            j = 0
-            k = 0
-            while j<len_word1:
-                merg += word1[j]
-                j+=1
-                merg += word2[k]
-                k+=1
+            word_1_iterator = 0
+            word_2_iterator = 0
+            while word_1_iterator<len_word1:
+                merg += word1[word_1_iterator]
+                word_1_iterator+=1
+                merg += word2[word_2_iterator]
+                word_2_iterator+=1
                 
-            merg += word2[k:]
+            merg += word2[word_2_iterator:]
             return merg
 
