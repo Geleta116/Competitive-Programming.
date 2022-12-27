@@ -1,0 +1,13 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = int(input())
+item = {}
+for it in range(n):
+    x= input()
+    if x in item:
+        item[x]+=1
+    else:
+        item[x]=1
+print(len(item))
+for l in item.values():
+    print(l, end=" ")
+    
