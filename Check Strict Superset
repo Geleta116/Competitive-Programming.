@@ -1,0 +1,14 @@
+lis = set(input().split())
+n = int(input())
+case = True
+out = []
+for item in range(n):
+    subs = set(input().split())
+    if lis.issuperset(subs):
+        out.append(True)
+    else:
+        out.append(False)
+if False in out :
+    print(False)
+else:
+    print(True)
