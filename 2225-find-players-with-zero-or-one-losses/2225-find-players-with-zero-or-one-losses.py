@@ -2,29 +2,29 @@ class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
         wins = []
         loses =[]
-        for i in matches:
-            wins.append(i[0])
+        for items in matches:
+            wins.append(items[0])
         wins = list(set(wins))
         
-        for j in matches:
-            loses.append(j[1])
+        for items in matches:
+            loses.append(items[1])
             
         lose = dict(Counter(loses))
-        print(lose)
         
-        out = []
+        
+        output = []
         win = []
         lost = []
-        for a in wins:
-            if a not in lose :
-                win.append(a)
+        for winners in wins:
+            if winners not in lose :
+                win.append(winners)
         win.sort()
-        out.append(win)
+        output.append(win)
         
-        for j in lose:
-            if lose[j] == 1:
-                lost.append(j)
+        for losers in lose:
+            if lose[losers] == 1:
+                lost.append(losers)
         lost.sort()
-        out.append(lost)
+        output.append(lost)
         
-        return out
+        return output
