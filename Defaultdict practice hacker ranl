@@ -1,0 +1,23 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import defaultdict
+n =  input().split()
+first = int(n[0])
+last = int(n[1])
+out = defaultdict(list)
+
+for spellings in range(first): # stores the first words in a list
+    out["A"].append(input())
+for spellings in range(last): # stores the second words in a list
+    out["B"].append(input())
+    
+for items in out["B"]: # checks if the words in one list is in another
+    if items not in out["A"]:
+        print(-1)
+    else:
+        count = 1
+        for words in out["A"]:
+            if words == items:
+                print(count, end=" ")
+            count +=1
+        print("")
+        
