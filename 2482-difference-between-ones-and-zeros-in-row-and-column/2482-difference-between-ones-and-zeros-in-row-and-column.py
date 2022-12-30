@@ -6,34 +6,26 @@ class Solution:
         rows = [0] * len_row
         cols = [0] * len_cols
         
-        for i in range(len(rows)):
-            for j in range(len(cols)):
-                rows[i]+= grid[i][j]
-                cols[j]+= grid[i][j]
-        print(rows)
-        print(cols)
+        for row_item in range(len(rows)):
+            for col_item in range(len(cols)):
+                rows[row_item]+= grid[row_item][col_item]
+                cols[col_item]+= grid[row_item][col_item]
+     
         out = []
         rowe = []
         cole = []
-        for i  in rows:
-            case = [i, len_cols - i]
+        for row_item  in rows:
+            case = [row_item, len_cols - row_item]
             rowe.append(case)
-        for i  in cols:
-            case = [i, len_row - i]
+        for col_item in cols:
+            case = [col_item, len_row - col_item]
             cole.append(case)
-        print(rowe)
-        print(cole)
-        for i in range(len(rowe)):
-            case = []
-            for j in range(len(cole)):
-                case.append(rowe[i][0] + cole[j][0] - rowe[i][1] -  cole[j][1])
-            out.append(case)
+        
+        for item in range(len(rowe)):
+            new_row = []
+            for cols in range(len(cole)):
+                new_row.append(rowe[item][0] + cole[cols ][0] - rowe[item][1] -  cole[cols ][1])
+            out.append(new_row)
         return out
-#         for i in range(len_row):
-#                 eachr = []
-#                 for j in range(len_cols):
-#                     eachr.append(rows[i] + cols[j]- (len_cols - rows[i]) - (len_row -  cols[j]))
-#                 out.append(eachr)
-#         return(out)
-                    
+
                                    
