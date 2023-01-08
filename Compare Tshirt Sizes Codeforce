@@ -1,0 +1,24 @@
+num_of_inputs = int(input())
+for iterations in range(num_of_inputs) :
+    tshirts = input().split()
+    tshirt1 = tshirts[0]
+    tshirt2 = tshirts[1]
+    if tshirt1[-1]<tshirt2[-1]:
+        print(">")
+    elif tshirt1[-1]>tshirt2[-1]:
+        print("<")
+    else:
+        if tshirt1[-1]!="S":
+            if len(tshirt1)>len(tshirt2) :
+                print(">")
+            elif len(tshirt1)<len(tshirt2):
+                print("<")
+            else:
+                print("=")
+        if tshirt1[-1]=="S":
+            if len(tshirt1)<len(tshirt2) :
+                print(">")
+            elif len(tshirt1)>len(tshirt2):
+                print("<")
+            else:
+                print("=")
