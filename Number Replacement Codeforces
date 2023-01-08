@@ -1,0 +1,16 @@
+num_of_inputs = int(input())
+for iterations in range(num_of_inputs) :
+    len_of_testcase = int(input())
+    list_of_nums = input().split()
+    checking_word = input()
+    checking_dict = {}
+    res = "YES"
+    for nums in range(len_of_testcase):
+        if list_of_nums[nums] not in checking_dict:
+            checking_dict[list_of_nums[nums]] = checking_word[nums]
+        else:
+            if checking_dict[list_of_nums[nums]] != checking_word[nums]:
+                res = "NO"
+                break
+    print(res)
+        
