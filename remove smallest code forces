@@ -1,0 +1,17 @@
+from collections import Counter
+N = int(input())
+for _ in range(N):
+      lns = int(input())
+      arr = input().split()
+      arr = [int(num) for num in arr]
+      arr.sort()
+      arr = set(arr)
+      count = Counter(arr)
+      for j in count:
+            if j+1 in count:
+                  arr.remove(j)
+      if len(arr) == 1:
+            print("YES")
+      else:
+            print("NO")
+
