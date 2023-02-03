@@ -3,10 +3,13 @@ class Solution:
         allowed = set(allowed)
         count = 0
         for word in words:
-            for letter in word:
-                if letter not in allowed:
-                    count += 1
+            wor  = set(word)
+            for a in wor:
+                if a not in allowed:
                     break
+            else:
+                count +=1
+        return count
+                
         
-        return len(words) - count
         
