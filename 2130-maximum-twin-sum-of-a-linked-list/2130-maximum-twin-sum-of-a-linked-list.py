@@ -5,38 +5,52 @@
 #         self.next = next
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
-            t = []
-            cc = head
-            while cc:
-                t.append(cc.val)
-                cc = cc.next 
-            tmp = head
-            current_node = head
-            tmp2 = head
-            tmp4 = head
-            tmp3 = head
-            slow = 0
-            while tmp2 and tmp2.next:
-                tmp2 = tmp2.next.next
-                tmp3 = tmp3.next
-                slow+=1
-           
-            current_node = head
-            prev = None
-            while current_node!=None:
-                    tmp = current_node.next
-                    current_node.next = prev
-                    prev = current_node
-                    current_node = tmp
+        slow = head
+        fast = head
+        dummy = ListNode(0,head)
+        c = dummy
+        count = 0
+        while fast and fast.next and fast.next:
+            count +=  1
+            fast = fast.next.next
+            slow = slow.next
+        store = slow
+        while slow and slow.next:
+            c.next = slow
+            c = c.next
+            slow = slow.next
+            
+        head2 = dummy.next
+        prev = None
         
-            g = 0
-            val = 0
-            while g<slow:
-                n =  prev.val + t[g]
-                val = max(val,n)
-                prev = prev.next
-                g+=1
-            return val
+        
+        current_node = head2
+        prev = None
+        while current_node!=None:
+            tmp = current_node.next
+            current_node.next = prev
+            prev = current_node
+            current_node = tmp
+            
+            
+       
+        maxi = 0
+        temp1 = head
+        temp2 = prev
+        while temp1 and temp2:
+            compare = temp1.val +temp2.val
+            maxi = max(maxi, compare)
+            temp1 = temp1.next
+            temp2 = temp2.next
+        
+        return maxi
+            
+        
                 
-           
+                
+            
+        
+            
+        
+        
         
