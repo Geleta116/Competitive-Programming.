@@ -1,0 +1,22 @@
+n, k = tuple(map(int,input().split()))
+l = list(map(int,input().split()))
+l.sort()
+ 
+if k == 0:
+    if l[0]>1:
+        print(l[0]-1)
+    else:
+        print(-1)
+elif n == k:
+    print(l[-1])
+elif l[k - 1] != l[k]:
+    print(l[k - 1])
+else:
+    print(-1)
+ 
+ 
+ ###################################
+ Time complexity == 0(nlogn)
+ 
+ reference :- fellow a2svians solution /* To understand the edge case that am missing*/
+###############################
