@@ -1,37 +1,27 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
+        left = 0
+        angrm_start = []
+        check_dict = defaultdict(int)
         count_p = Counter(p)
-        len_p = len(p)
-        anagram_check = Counter(s[:len_p])
-        start = 0
-        end = len_p
-        valid = []
-        if anagram_check == count_p:
-                valid.append(start)
-        while end < len(s):
-            if anagram_check == count_p:
-                valid.append(start)
-            if anagram_check[start] == 1:
-                anagram_check.pop(s[start])
+        length_p = len(p)
+        for right in range(len(s)):
+            if right - left < length_p:
+                check_dict[s[right]]+=1
             else:
-                anagram_check[s[start]]-=1
-            if anagram_check[s[end]]:
-                anagram_check[s[end]] += 1
-            else:
-                anagram_check[s[end]] = 1
-            
+                if check_dict == count_p:
+                    angrm_start.append(left)
+                check_dict[s[right]] += 1
                 
-            end += 1
-            start += 1
-            if end == len(s):
-                if anagram_check == count_p:
-                    valid.append(start)
-                    break
-        return list(set(valid))
+                
+                if check_dict[s[left]] == 1:
+                    check_dict.pop(s[left])
+                else:
+                    check_dict[s[left]] -= 1
+                left += 1
+        if check_dict == count_p:
+                    angrm_start.append(left)
+        return angrm_start
                 
         
-        
-    
-            
-            
         
