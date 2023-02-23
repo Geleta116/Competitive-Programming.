@@ -12,7 +12,7 @@ class Solution:
         matrix.pop(0)
         for mat in matrix:
             mat.pop(0)
-        print(matrix)
+        
         c = len(matrix[0])-1
         r = len(matrix)-1
         arr = []
@@ -21,7 +21,7 @@ class Solution:
                 pre_ind_y = min(c,col+k) 
                 pre_ind_x = min(r,row+k)
                 pre = matrix[pre_ind_x][pre_ind_y]
-                # print(pre)  #I used this to find the last index of presum
+                
                 
                 left_bottom = 0
                 middle = 0
