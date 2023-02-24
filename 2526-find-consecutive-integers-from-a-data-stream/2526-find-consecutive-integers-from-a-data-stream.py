@@ -3,25 +3,30 @@ class DataStream:
     def __init__(self, value: int, k: int):
         self.value = value
         self.k = k
-        self.list = []
-        self.notequalindex = -1
-        
+        self.nums = []
+        self.last = -1
         
 
     def consec(self, num: int) -> bool:
-        self.list.append(num)
-        if (num != self.value):
-            self.notequalindex = len(self.list)-1
         
-        if len(self.list)<self.k:
+        if len(self.nums) < self.k - 1 :
+            self.nums.append(num)
+            if num != self.value:
+                self.last = len(self.nums) - 1
+            return False
+        if num != self.value:
+            self.nums.append(num)
+            self.last = len(self.nums)-1
             return False
         else:
-            return (len(self.list)-1)-self.notequalindex >= self.k
-            # if self.notequal  in self.list[len(self.list)-self.k:]:
-            #     return False
-            # else:
-            #     return True
-            
+            self.nums.append(num)
+            print(self.last,len(self.nums)- self.k)
+            if self.last < len(self.nums) - self.k:
+                return True
+            elif self.last == -1 and self.value == num:
+                return True
+            return False
+        
         
 
 
