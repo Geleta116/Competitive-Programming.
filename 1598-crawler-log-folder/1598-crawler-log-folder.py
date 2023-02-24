@@ -1,15 +1,15 @@
 class Solution:
     def minOperations(self, logs: List[str]) -> int:
-        operations = 0
+        operations = []
         for ops in logs:
             if ops == "../":
-                if operations > 0:
-                    operations -= 1
+                if len(operations):
+                    operations.pop()
             elif ops == "./":
                 continue
             else:
-                operations += 1
-        return operations
+                operations.append("file")
+        return len(operations)
                 
         
         
