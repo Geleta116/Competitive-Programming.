@@ -1,15 +1,11 @@
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
-        checker = {}
+        checker = defaultdict(lambda:0)
         answer = 0
         start = 0
         
         for tree in range(len(fruits)):
-            if fruits[tree] in checker :
-                checker[fruits[tree]] += 1
-            else:
-                checker[fruits[tree]] = 1
-            
+            checker[fruits[tree]] += 1
             while len(checker)>2:
                 
                 if checker[fruits[start]] == 1:
