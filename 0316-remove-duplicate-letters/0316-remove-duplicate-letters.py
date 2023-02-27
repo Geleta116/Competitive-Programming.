@@ -1,17 +1,39 @@
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
-        s1 = []
-        sett =set()
-        last = {}
-        for d in range(len(s)):
-            last[s[d]]=d
-        print(last)
-        for i in range(len(s)):
-            if s[i] not in sett:
-                while (s1 and s1[-1]>s[i] and last[s1[-1]]>i):
-                    sett.remove(s1.pop())
-                s1.append(s[i])
-                sett.add(s[i])
-        return "".join(s1)
-
+        stack = []
+        s = [i for i in s]
+        checker = defaultdict(int)
+        ch = set()
+        for char in s:
+            checker[char] += 1
         
+        for char in s:
+            
+            if not stack:
+                checker[char] -= 1
+                stack.append(char)
+                ch.add(char)
+            else:
+                if stack[-1]<char and char not in ch:
+                    checker[char] -= 1
+                    stack.append(char)
+                    ch.add(char)
+                elif stack[-1] == char:
+                    checker[char] -= 1
+                    
+                else:
+                    if char not in ch:
+                        while stack and  stack[-1] > char and checker[stack[-1]] > 0:
+                            ch.remove(stack[-1])
+                            stack.pop()
+                            
+                        checker[char] -= 1
+                        stack.append(char)
+                        ch.add(char)
+                    elif char in ch:
+                        checker[char] -= 1
+                        
+        answer = "".join(stack)
+        return answer
+                    
+                
