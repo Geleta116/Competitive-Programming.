@@ -1,15 +1,19 @@
 class Solution:
     def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
-        activity = []
-        for passenger,start,end in trips:
-            activity.append([start,passenger])
-            activity.append([end,-passenger])
-        activity.sort()
-        for loc,passs in activity:
-            capacity -= passs
-            if capacity<0:
+        path = [0 for _ in range(10003)]
+       
+        for trip in trips:
+            path[trip[1]] += trip[0]
+            if trip[2]+1 < len(path):
+                path[trip[2]] -= trip[0]
+        
+        for location in range(1,len(path)):
+            path[location] += path[location - 1]
+        
+        for location in range(0,len(path)):
+            if path[location] > capacity:
                 return False
+        
         return True
-        
-        
+            
         
