@@ -9,8 +9,10 @@ class Solution:
             # print(mid)
             if nums[mid] > target :
                 right = mid - 1
+            elif nums[mid] < target:
+                left = mid
             else:
-                left = mid 
+                return mid
             
             
         if nums[left] ==  target:
