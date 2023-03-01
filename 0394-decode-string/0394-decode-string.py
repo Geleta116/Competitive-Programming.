@@ -1,23 +1,22 @@
 class Solution:
     def decodeString(self, s: str) -> str:
-        stack = []
-        current = ""
-        num = 0
-        for index in range(len(s)):
-            if s[index] == "[":
-                stack.append(current)
-                stack.append(num)
-                current = ""
-                num = 0
-            elif s[index] == "]":
-                curnum = stack.pop()
-                considered = stack.pop()
-                current = considered + current * curnum
-            elif s[index].isdigit():
-                num = num*10 + int(s[index])
+        
+        lastindex = [0]
+        integer = ""
+        
+        def decoder(start,integer,lastindex):
+            if start >= len(s):
+                return ""
+            elif s[start] == "]":
+                lastindex[0] = start
+                return ""
+            elif s[start] == "[":
+                return int(integer) * decoder(start+1,"",lastindex) + decoder(lastindex[0]+1, "", lastindex)
+            elif s[start].isnumeric():
+                
+                return decoder(start + 1, integer + s[start], lastindex)
             else:
-                current += s[index]
-                
-        return current
-                
-                
+                return s[start] + decoder(start+1,integer,lastindex)
+        return decoder(0,"",lastindex) 
+        
+      
