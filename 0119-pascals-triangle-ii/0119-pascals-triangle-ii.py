@@ -1,11 +1,14 @@
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
-        line = [1]
-        # return line
-        def helper(rowIndex,k,line):
-            if k == rowIndex:
-                return line
-            line.append(line[k] * (rowIndex-k) // (k+1))
-            return helper(rowIndex,k+1,line)
-        return helper(rowIndex,0,line)
+        if rowIndex < 2:
+            return [1 for _ in range(rowIndex + 1)]
+        
+        previous = self.getRow(rowIndex - 1)
+        output = [1 for _ in range(rowIndex+1)]
+        for index in range(rowIndex-1):
+            output[index + 1] = previous[index] + previous[index + 1]
+            
+        return output
+            
+            
             
