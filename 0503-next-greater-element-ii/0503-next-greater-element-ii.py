@@ -30,7 +30,7 @@ class Solution:
                         container[ind] = num
                     stack.append([num , index])
         
-        #populate the output array with the new founf index and numbers
+        #populate the output array with the new found index and numbers
         for keys in container:
             if keys < len_nums :
                 next_greater_list[keys] = container[keys]
