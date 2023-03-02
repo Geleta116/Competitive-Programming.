@@ -3,11 +3,7 @@ class Solution:
         #create a queue and also a running sum variable
         #make sure that the running sum is always increasing and stored also in your queue
         #along with the index
-        # if len(nums) == 1:
-        #     if nums[0] >= k:
-        #         return 1
-        #     else:
-        #         return -1
+        
         checker = deque()
         running_sum = 0
         output = float("inf") 
@@ -43,8 +39,5 @@ class Solution:
                 
         
        
-    """
-       [84,-37,32,40,95]
-        167
-       """ 
+    
         
