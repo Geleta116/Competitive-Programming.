@@ -1,15 +1,15 @@
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
-        out = 0
-        p = {0:1}
-        summ = 0
-        for i in nums:
-            summ +=i
-            diff = summ-goal
-            out+=p.get(diff,0)
-            p[summ ]= 1+p.get(summ,0)
-            
-        return out
+        running_sum = 0
+        checker = defaultdict(int)
+        output = 0
+        for item in range(len(nums)):
+            running_sum += nums[item]
+            if running_sum - goal in checker:
+                output += checker[running_sum - goal]
+            if running_sum == goal:
+                output += 1
+            checker[running_sum] += 1
+        return output
             
         
-            
