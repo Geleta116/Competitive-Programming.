@@ -2,7 +2,7 @@ class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         #This is the initialization of the left and the right pointers
         left = 0
-        right = max(piles)
+        right = max(piles) + 1
         
         
         #This is the validate function
