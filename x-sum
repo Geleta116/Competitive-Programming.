@@ -1,0 +1,30 @@
+from collections import defaultdict
+testcase = int(input())
+for _ in range(testcase):
+    newlist = list(tuple(map(int,input().split())))
+    c = newlist[1]
+    r = newlist[0]
+    grid = []
+    for row in range(r):
+        eachrow = list(map(int,input().split()))
+        grid.append(eachrow)
+    diagonal1 = defaultdict(int)
+    diagonal2 = defaultdict(int)
+    for row in range(len(grid)):
+        for col in range(len(grid[0])):
+            diagonal1[row - col] += grid[row][col]
+    
+    for row in range(len(grid)):
+        for col in range(len(grid[0])):
+            diagonal2[row + col] += grid[row][col]
+    
+    output = 0       
+    for row in range(len(grid)):
+        for col in range(len(grid[0])):
+            diag1 = diagonal1[row - col]
+            diag2 = diagonal2[row + col]
+            output = max(output,diag1 + diag2 - grid[row][col])
+    
+    print(output)
+        
+            
