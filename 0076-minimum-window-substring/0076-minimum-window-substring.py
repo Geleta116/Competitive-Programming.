@@ -58,7 +58,7 @@ class Solution:
             if mini == float(inf):  
                    return ""
             else:
-                return shortest_substring
+                return shortest_substring 
                     
                 
                 
