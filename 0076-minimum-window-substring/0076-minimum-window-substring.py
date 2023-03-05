@@ -1,7 +1,6 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        if t == "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ":
-            return "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ"
+      
         #It is impossible for len(s) to be greater that T and still return a Truthy Value
         if len(s)<len(t):
             return ""
@@ -24,7 +23,7 @@ class Solution:
         else:
             left = 0
             #build sliding window to check the minimum
-            shortest_substring = []
+            shortest_substring = ""
             mini = float("inf")
             counter_t = Counter(t)
             hold = defaultdict(int)
@@ -38,11 +37,9 @@ class Solution:
                         break 
                 # print(flag)
                 if flag:
-                    if not shortest_substring:
-                        shortest_substring.append([s[left:right + 1]])
-                    else:
-                        if len(shortest_substring[-1][0]) > right - left + 1:
-                            shortest_substring.append([s[left:right + 1]])
+                    if mini > right - left:
+                        mini = right - left
+                        shortest_substring = s[left:right + 1]
                     while left <= right and flag:
                         hold[s[left]] -= 1
                         left += 1
@@ -52,17 +49,16 @@ class Solution:
                                 break
                         
                         if flag:
+                            if mini > right - left:
+                                mini = right - left
+                                shortest_substring = s[left:right + 1]
                             
-                            if not shortest_substring:
-                                shortest_substring.append([s[left:right + 1]])
-                            else:
-                                if len(shortest_substring[-1][0]) > right - left + 1:
-                                    shortest_substring.append([s[left:right + 1]])
+                            
                         
-            if shortest_substring:  
-                   return shortest_substring[-1][0]
+            if mini == float(inf):  
+                   return ""
             else:
-                return ""
+                return shortest_substring
                     
                 
                 
