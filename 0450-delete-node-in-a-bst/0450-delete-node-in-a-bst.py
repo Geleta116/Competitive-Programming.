@@ -6,26 +6,23 @@
 #         self.right = right
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        def inorder(n):
-            current = n
+        def inorder(r):
+            current = r
             while current.left:
                 current = current.left
             return current
-        
         if root == None:
             return None
         elif root.val < key:
             root.right = self.deleteNode(root.right, key)
         elif root.val > key:
-            root.left = self.deleteNode(root.left,key)
-        
+            root.left = self.deleteNode(root.left, key)
         else:
-            if not root.left :
+            if not root.left:
                 return root.right
-            elif not root.right :
+            elif not root.right:
                 return root.left
-            inorder = inorder(root.right)
-            root.val = inorder.val
+            root.val = inorder(root.right).val
             root.right = self.deleteNode(root.right,root.val)
         return root
-        
+            
