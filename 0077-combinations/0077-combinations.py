@@ -1,20 +1,25 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        nums = [integer for integer in range(1,n+1)]
-        combinations = []
-        def backtrack(i, temp):
-            if len(temp) == k:
-                combinations.append(temp[:])
+        self.out = []
+        start = 0
+        self.arr = [num for num in range(1,n + 1)]
+      
+        def combinations(lis,start):
+            if len(lis) == k:
+                self.out.append(lis[:])
                 return
-            elif i >= n:
+            elif start >= n:
                 return
             
-            backtrack(i + 1, temp)
-            temp.append(nums[i])
-            backtrack(i+1, temp)
-            temp.pop()
-        backtrack(0,[])
-        return combinations            
+            combinations(lis,start + 1)
+            lis.append(self.arr[start - 1])
+            combinations(lis, start + 1)
+            lis.pop()
+            
+        combinations([], 0)
+        return self.out
+        
+                 
            
                 
                 
