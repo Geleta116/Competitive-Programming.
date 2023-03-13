@@ -1,16 +1,20 @@
 class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
-        self.score = 0
-        def winner(nums,s,e,turn):
-            if s == e:
-                return turn * nums[s]
-            left = turn * nums[s] + winner(nums,s+1,e,-1 * turn)
-            right = turn * nums[e] + winner(nums,s,e - 1, -1 * turn)
-            return turn * max(left * turn,right * turn)
-           
-        store =  winner(nums,0,len(nums)-1, 1)
-        if store >= 0 :
+        
+        def backtrack(left , right, turn):
+            if left > right:
+                return 0
+            
+            if turn :
+                return max(nums[left] + backtrack(left + 1 , right , not turn),nums[right] + backtrack(left , right - 1 , not turn ))
+            else:
+                return min(-nums[left] + backtrack(left + 1 , right , not turn ), -nums[right] + backtrack(left , right - 1 , not turn))
+        case = backtrack(0, len(nums)-1 , True)
+        if case >=0:
             return True
         return False
+            
+            
+    
             
         
