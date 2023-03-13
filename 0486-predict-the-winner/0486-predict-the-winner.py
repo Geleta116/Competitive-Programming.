@@ -5,11 +5,11 @@ class Solution:
             if left > right:
                 return 0
             
-            if turn :
-                return max(nums[left] + backtrack(left + 1 , right , not turn),nums[right] + backtrack(left , right - 1 , not turn ))
+            if turn == 1:
+                return max(nums[left] + backtrack(left + 1 , right , 0),nums[right] + backtrack(left , right - 1 , 0 ))
             else:
-                return min(-nums[left] + backtrack(left + 1 , right , not turn ), -nums[right] + backtrack(left , right - 1 , not turn))
-        case = backtrack(0, len(nums)-1 , True)
+                return min(-nums[left] + backtrack(left + 1 , right , 1 ), -nums[right] + backtrack(left , right - 1 , 1 ))
+        case = backtrack(0, len(nums)-1 , 1)
         if case >=0:
             return True
         return False
