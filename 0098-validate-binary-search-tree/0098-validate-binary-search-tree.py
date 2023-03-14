@@ -24,16 +24,16 @@ class Solution:
         
         
         
-#         if not root:
-#             return True
-#         elif  root.left and root.left.val >= root.val:
-#             return False
-#         elif  root.right and root.right.val <= root.val:
-#             return False
+        if not root:
+            return True
+        elif  root.left and root.left.val >= root.val:
+            return False
+        elif  root.right and root.right.val <= root.val:
+            return False
         
-#         else:
-#             left = self.isValidBST(root.left)
-#             right = self.isValidBST(root.right)
-#             return left and right
+        else:
+            left = self.isValidBST(root.left)
+            right = self.isValidBST(root.right)
+            return left and right
             
         
