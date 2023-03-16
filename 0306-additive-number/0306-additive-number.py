@@ -13,8 +13,6 @@ class Solution:
                     if len(num) >2 and len(temp) == len(num) and  int(num[0]) + int(num[1]) == int(num[2]):
                         return len(arr)>2
                     
-                
-            
            
             for end in range(start,len(num)):
                 val = num[start:end + 1]
@@ -25,18 +23,7 @@ class Solution:
                             return False
                     else:
                         arr.append(val)
-                    
-                        if len(val)>1 and val[0] == 0 :
-                                return False
-                    
-                        elif backtrack(arr,end+1):
-                            
-                            if  (arr[-2] != str(int(arr[-2])) or arr[-1] != str(int(arr[-1]))):
-                                
-                                return False
-                            elif len(val)>1 and val[0] == 0 :
-                                
-                                return False
+                        if backtrack(arr,end+1):
                             return True
                         arr.pop()
             return False
