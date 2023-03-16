@@ -29,4 +29,3 @@ class Solution:
             return False
         return backtrack(self.arr,0)
                         
-  
