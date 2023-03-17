@@ -1,0 +1,4 @@
+testcase = int(input())
+for tests in range(testcase):
+    a,b = list(tuple(map(int,input().split())))
+    print(min(min(a,b), (a+b)//4))
