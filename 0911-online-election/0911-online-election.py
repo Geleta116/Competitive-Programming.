@@ -15,19 +15,12 @@ class TopVotedCandidate:
                 
             else:
                 self.leader =  self.persons[item]
-            
-        
-        
-            
-   
 
     def q(self, t: int) -> int:
         def validate(mid,t):
             if self.times[mid] >= t:
                 return True
             return False
-            
-        
 
         start = -1
         end = len(self.persons)
@@ -47,42 +40,7 @@ class TopVotedCandidate:
                     return self.persons[0]
                 else:
                     return self.persons[end - 1]
-        
-       
-# #         if end >= len(self.times):
-# #             if self.winners[-1][1] == self.winners[-1][2]:
-# #                 return self.winners[-1][0]
-# #             else:
-# #                 if self.winners[-1][1] > self.winners[-1][2]:
-# #                     return 0
-# #                 else:
-# #                     return 1
-        
-# #         if self.times[end] == t:
-# #             if self.winners[end][1] == self.winners[end][2]:
-# #                 return self.winners[end][0]
-# #             else:
-# #                 if self.winners[end][1] > self.winners[end][2]:
-# #                     return 0
-# #                 else:
-# #                     return 1
-# #         else:
-# #             if end == 0:
-# #                 return self.winners[0][0]
-            
-# #             else:
-                
-# #                 if self.winners[end-1][1] == self.winners[end-1][2]:
-                    
-# #                     return self.winners[end - 1][0]
-# #                 else:
-# #                     if self.winners[end-1][1] > self.winners[end-1][2]:
-# #                         return 0
-# #                     else:
-# #                         return 1
-
-                
-
+      
         
 
 
