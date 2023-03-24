@@ -1,18 +1,15 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        l = 1
-        h = len(nums)-1
-        while l <= h:
-            cent = (l+h)//2
-            count = 0
-            count = sum(nu <= cent for nu in nums)
-            if count > cent:
-                dup = cent
-                h = cent-1
-            else:
-                l = cent+1
-                
-        return dup
+        for read in range(len(nums)):
+            while nums[read] != read + 1:
+                current = nums[read]
+                if nums[current - 1] == nums[read]:
+                    break
+                nums[read], nums[current - 1] = nums[current - 1], nums[read]
+        
+        for index, number in enumerate(nums):
+            if index + 1 != number:
+                return  number
                 
         
         
