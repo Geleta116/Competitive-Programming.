@@ -35,7 +35,7 @@ class Solution:
             arr = []
             arr.append(letters[index])
             backtrack(arr)
-        self.container.sort()
+        
         if k <= len(self.container):
                 return self.container[k - 1]
         return self.out
