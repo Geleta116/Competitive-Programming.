@@ -3,8 +3,3 @@ This file is used to store the solutions of the A2SV community path questions th
 
 
 
-| Month    | Savings |
-| -------- | ------- |
-| January  | $250    |
-| February | $80     |
-| March    | $420    |
