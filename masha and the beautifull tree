@@ -1,0 +1,40 @@
+tries = int(input())
+for _ in range(tries):
+    length = int(input())
+    array = list(map(int, input().split()))
+    
+    operation = 0
+    def mergeSort(left, right, arr):
+     if left == right:
+         return [arr[left]]
+     mid = left + (right - left) // 2
+     left_half = mergeSort(left, mid, arr)
+     right_half = mergeSort(mid + 1, right, arr)
+     
+     return merge(left_half, right_half)
+
+
+
+    def merge(left, right):
+        arr = []
+        if left[-1] <= right[0]:
+            arr += left
+            arr += right
+            return arr
+        else:
+            global operation 
+            operation += 1
+            arr += right
+            arr += left
+            return arr
+    
+    arr = mergeSort(0, len(array) - 1, array)
+    anotherone = list(arr)
+    anotherone.sort()
+    if anotherone == arr:
+        print(operation)
+    else:
+        print(-1)
+    
+    
+        
