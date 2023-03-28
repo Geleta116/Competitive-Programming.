@@ -1,0 +1,60 @@
+rounds, k = tuple(map(int,input().split()))
+final = list(map(int,input().split()))
+output = []
+scores = []
+for index, score in enumerate(final):
+    scores.append([ index, score])
+ 
+def mergeSort(left, right, arr):
+     if left == right:
+         return [arr[left]]
+     mid = left + (right - left) // 2
+     left_half = mergeSort(left, mid, arr)
+     right_half = mergeSort(mid + 1, right, arr)
+     
+     return merge(left_half, right_half)
+ 
+ 
+def merge(left, right):
+    arr = []
+    indexleft = 0
+    indexright = 0
+    while indexleft < len(left) and indexright < len(right):
+        if  abs(left[indexleft][1] - right[indexright][1]) <= k:
+            
+            if left[indexleft][1] <= right[indexright][1]:
+                arr.append(left[indexleft])
+                indexleft += 1
+            else:
+                arr.append(right[indexright])
+                indexright += 1
+        else:
+            if left[indexleft][1] <= right[indexright][1]:
+                
+                indexleft += 1
+            else:
+                
+                indexright += 1
+    while indexleft < len(left):
+        arr.append(left[indexleft])
+        indexleft += 1
+ 
+    while indexright < len(right):
+        arr.append(right[indexright])
+        indexright += 1
+    
+    return arr
+current = mergeSort(0 , len(scores) - 1,  scores)
+output = []
+ 
+for item in current:
+    output.append(item[0] + 1)
+output.sort()
+for item in output:
+    print(item , end=" ")
+        
+        
+        
+        
+        
+        
