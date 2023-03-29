@@ -1,6 +1,7 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         self.permutations = []
+        
         def backtrack(arr):
             if len(set(arr)) ==  len(nums):
                 self.permutations.append(arr[:])
@@ -14,10 +15,7 @@ class Solution:
                 arr.pop()
         
         
-        for index in range(len(nums)):
-            arr = []
-            arr.append(nums[index])
-            backtrack(arr)
+        backtrack([])
         
        
         return self.permutations
