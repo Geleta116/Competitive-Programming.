@@ -1,6 +1,6 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        output = []
+        
         previous = defaultdict(int)
         for numbers in range(n + 1):
             count = 0
@@ -15,7 +15,8 @@ class Solution:
                     count += previous[numbers]
                     break
             previous[first] = count
-            output.append(count)
-        return output
+            
+        
+        return previous.values()
                 
         
