@@ -7,11 +7,7 @@ class Solution:
         
         self.visited = [[False for i in range(len(grid1[0]))] for j in range(len(grid1))]
         self.count = 0
-        #         if grid2[row][col] == 0:
-        #                 return 
-
-        #             if self.visited[row][col]:
-        #                 return
+      
             
         def dfs(row, col):
             self.visited[row][col] = True
@@ -45,7 +41,7 @@ class Solution:
                     self.status = True
                     store = dfs(row, col)
                     if store:
-                        # print(row,col)
+                        
                         self.count += 1
         
         return self.count
