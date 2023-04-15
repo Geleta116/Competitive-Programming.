@@ -6,7 +6,9 @@
 #         self.right = right
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        
         self.out = 0
+        
         def dfs(root, arr):
             
             if not root:
