@@ -25,7 +25,7 @@ class Solution:
             right = dfs(root.right, arr)
             
             if left and right:
-                print(arr)
+                
                 self.out += int("".join(arr))
             arr.pop()
             
