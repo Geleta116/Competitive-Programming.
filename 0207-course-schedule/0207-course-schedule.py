@@ -18,8 +18,8 @@ class Solution:
 
         while queue:
             current = queue.pop()
-            if indegree[current] == 0:
-                output.append(indegree)
+            
+            output.append(indegree)
             
             for child in graph[current]:
                 indegree[child] -= 1
