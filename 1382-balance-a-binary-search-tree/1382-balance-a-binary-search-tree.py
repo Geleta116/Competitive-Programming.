@@ -12,8 +12,6 @@ class Solution:
             
             if not node:
                 return
-            
-            
             inorder(node.left)
             self.store.append(node.val)
             inorder(node.right)
@@ -23,9 +21,7 @@ class Solution:
         def rebuild(start, end):
             if start > end:
                 return None
-
-            mid = (end + start) // 2
-           
+            mid = start + (end - start) // 2
             currNode = TreeNode(self.store[mid]) 
             currNode.left = rebuild(start, mid - 1)
             currNode.right = rebuild(mid + 1, end)
