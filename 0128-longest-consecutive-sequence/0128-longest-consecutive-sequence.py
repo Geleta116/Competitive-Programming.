@@ -1,10 +1,10 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         par  = defaultdict(int)
-        rank = defaultdict(int)
+       
         for num in nums:
             par[num] = num
-            rank[num] = 1
+            
         
         def find(x):
             if x != par[x]:   
@@ -26,7 +26,7 @@ class Solution:
                 union(num, num + 1)
         for num in nums:
             find(num)
-        count = 1
+        
         counter = defaultdict(int)
         for key in par:
             counter[par[key]] += 1
