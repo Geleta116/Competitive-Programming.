@@ -6,7 +6,7 @@ class Solution:
         newQuery = [(cost, left, right, i) for i,(left, right, cost) in enumerate(queries) ]
         newQuery.sort()
         edgeList.sort(key= lambda x:x[2])
-        print(newQuery)
+        
         for num in range(n):
             par[num] = num
             rank[num] = 1
