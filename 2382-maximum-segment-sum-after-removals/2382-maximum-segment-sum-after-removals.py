@@ -1,26 +1,44 @@
 class Solution:
-    def find(self, i, ds):
-        return i if ds[i] < 0 else self.find(ds[i], ds)
+    def maximumSegmentSum(self, nums: List[int], removeQueries: List[int]) -> List[int]:
+        n = len(nums)
+        parent = [i for i in range(n)]  # Initially each element is its own parent
+        rank = [0] * n                  # Rank array for optimization
+        sum_values = [nums[i] for i in range(n)]  # Initialize sum values with the element values
+        visited = set()
+        # Find operation
+        def find(x):
+            if parent[x] != x:
+                parent[x] = find(parent[x])  # Path compression
+            return parent[x]
 
-    def merge(self, s1, s2, ds):
-        p1 = self.find(s1, ds)
-        p2 = self.find(s2, ds)
-        ds[p2] += ds[p1]
-        ds[p1] = p2
+        
+        def union(x, y):
+            root_x = find(x)
+            root_y = find(y)
 
-    def maximumSegmentSum(self, nums, rq):
-        res = [0] * len(nums)
-        ds = [float('inf')] * len(nums)
+            if root_x == root_y:
+                return
 
-        for i in range(len(rq) - 1, 0, -1):
-            j = rq[i]
-            ds[j] = -nums[j]
-
-            if j > 0 and ds[j - 1] != float('inf'):
-                self.merge(j, j - 1, ds)
-            if j < len(nums) - 1 and ds[j + 1] != float('inf'):
-                self.merge(j, j + 1, ds)
-
-            res[i - 1] = max(res[i], -ds[self.find(j, ds)])
-
-        return res
+            if rank[root_x] > rank[root_y]:
+                parent[root_y] = root_x
+                sum_values[root_x] += sum_values[root_y]
+            else:
+                parent[root_x] = root_y
+                sum_values[root_y] += sum_values[root_x]
+                if rank[root_x] == rank[root_y]:
+                    rank[root_y] += 1
+        output = [0]
+        for index in range(len(nums) - 1, -1, -1):
+           
+            visited.add(removeQueries[index])
+            if removeQueries[index] > 0 and  removeQueries[index] - 1 in visited:
+                union(removeQueries[index], removeQueries[index] - 1 )
+            if removeQueries[index] < (len(nums) - 1) and  removeQueries[index] + 1 in visited:
+                union(removeQueries[index], removeQueries[index] + 1 ) 
+            curr = sum_values[find(removeQueries[index])]
+            maxi = max(output[-1], curr)
+            output.append(maxi)
+        if output:
+            output.pop()
+        return output[::-1]
+            
