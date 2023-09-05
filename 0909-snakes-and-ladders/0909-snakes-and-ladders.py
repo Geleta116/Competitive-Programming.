@@ -1,42 +1,46 @@
 class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
         n = len(board)
-        target = n * n
-        queue = deque([(1, 0)])  # (current position, steps)
-        visited = set()
-
-        while queue:
-            index, level = queue.popleft()
-            visited.add(index)
-
-            if index == target:
+        self.queue = deque()
+        self.visited = set()
+        self.queue.append((1,0))
+        
+      
+        while self.queue:
+            
+            n_index, level = self.queue.popleft()         
+            
+            if n_index == n * n:
+                
                 return level
-
-            for i in range(1, 7):
-                next_index = index + i
-                if next_index > target:
+            
+            for i in range(1,7):
+                
+                index = n_index + i
+                
+                if index > n * n:
                     break
+                    
+                row = n - 1 - (index - 1) // n
+                
+                column =  (index - 1) % n if (n - row) % 2 == 1 else n - 1 - (index - 1) % n
 
-                row = n - 1 - (next_index - 1) // n
-                col = (next_index - 1) % n if (n - row) % 2 == 1 else n - 1 - (next_index - 1) % n
+                if board[row][column] == -1 :
 
-                if board[row][col] != -1:
-                    next_index = board[row][col]
+                        if index not in self.visited:
 
-                if next_index not in visited:
-                    visited.add(next_index)
-                    queue.append((next_index, level + 1))
+                            self.visited.add(index)
+                            self.queue.append((index, level + 1))
+
+
+                if board[row][column] != -1 :
+                    if board[row][column] not in self.visited:
+                        self.visited.add(board[row][column])
+                        self.queue.append((board[row][column], level + 1))
 
         return -1
-
-
-
-
                     
-        
-        
-        
-        
+   
         
         
         
