@@ -14,22 +14,21 @@ class Solution:
         
         for index in range(len(routes)):
             for busStop in routes[index]:
-                graph[index].add(busStop)
-                sec_graph[busStop].add(index)
+                graph[busStop].add(index)
                 
         # bfs
-        for item in sec_graph[source]:
+        for item in graph[source]:
             queue.append((item,1))
             visited.add(item)
         
         while queue:
             currPar, level = queue.popleft()
             
-            if target in graph[currPar]:
+            if target in routes[currPar]:
                 return level
             
-            for child in graph[currPar]:
-                for item in sec_graph[child]:
+            for child in routes[currPar]:
+                for item in graph[child]:
                     if item not in visited:
                         visited.add(item)
                         queue.append((item, level + 1))
