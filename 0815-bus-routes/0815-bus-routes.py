@@ -4,7 +4,6 @@ class Solution:
         # Data structures
         
         graph = defaultdict(set)
-        sec_graph = defaultdict(set)
         queue = deque()
         visited = set()
         
