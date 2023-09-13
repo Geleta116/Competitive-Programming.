@@ -30,7 +30,7 @@ class Solution:
                         self.visited.add(child)
          
             
-            return nodeCount * (nodeCount - 1) == 2 * edgeCount // 2
+            return nodeCount * (nodeCount - 1) ==  edgeCount 
 
             
             
