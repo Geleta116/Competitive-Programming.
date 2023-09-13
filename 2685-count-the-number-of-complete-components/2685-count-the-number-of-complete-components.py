@@ -28,8 +28,7 @@ class Solution:
                         
                         self.queue.append(child)
                         self.visited.add(child)
-            if edgeCount == 0:
-                return True
+         
             
             return nodeCount * (nodeCount - 1) == 2 * edgeCount // 2
 
