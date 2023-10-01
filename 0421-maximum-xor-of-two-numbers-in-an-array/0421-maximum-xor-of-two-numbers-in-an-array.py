@@ -1,38 +1,54 @@
+
 class Trie:
     def __init__(self):
-        self.root={}
-        self.m=0
+        self.root = {}
+        self.maxi = 0
     
-    def insert(self,word):
-        node=self.root
-        for ch in word:
-            if ch not in node:
-                node[ch]={}
-            node=node[ch]
+    def insert(self, nums):
         
-    def compare(self,word,i):
-        node=self.root
-        t=""
-        a,b='0','1'
-        for ch in word:
-            if ch==a and b in node:
-                t+=b
-                node=node[b]
-            elif ch==b and a in node:
-                t+=a
-                node=node[a]
+        num = bin(nums)
+
+        # Remove the '0b' prefix and keep the remaining part
+        num = num[2:]
+
+        # Ensure the string is 32 bits long by padding with zeros if needed
+        while len(num) < 32:
+            num = '0' + num
+        
+        curr =  self.root
+        maxi = self.maxi
+        for char in num:
+            if int(char) in curr:
+                curr = curr[int(char)]
             else:
-                t+=ch
-                node=node[ch]
-        self.m=max(self.m,int(t,2)^i)
+                
+                curr[int(char)] = {}
+                curr = curr[int(char)]
+                
+        curr =  self.root
+        store = ""
+        for char in num:
+            if curr:
+                if (1 - int(char)) in curr:
+                    store += str(1 - int(char))
+                    curr =  curr[1 - int(char)]
+                else:
+                    store += char
+                    curr =  curr[int(char)]
+        compared = int(store, 2)
+        self.maxi = max(self.maxi, nums ^ compared)
+                
 
 class Solution:
     def findMaximumXOR(self, nums: List[int]) -> int:
-        trie=Trie()
-        for i in nums:
-            word="{:032b}".format(i)
-            trie.insert(word)
-        for i in nums:
-            word="{:032b}".format(i)
-            trie.compare(word,i)
-        return trie.m
+        trie = Trie()
+        for num in nums:
+            trie.insert(num)
+        # print(trie.root.children)
+        return trie.maxi
+        
+
+
+
+        
+        
