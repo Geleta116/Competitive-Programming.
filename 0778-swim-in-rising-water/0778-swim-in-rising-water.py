@@ -7,14 +7,14 @@ class Solution:
         def inbound(row, col):
             return 0 <= row < len(grid) and 0 <= col < len(grid[0])
     
-        heap = [(grid[0][0], 0, 0, 0)]
+        heap = [(grid[0][0], 0, 0)]
         heapq.heapify(heap)
 
         visited = set()
 
         while heap:
 
-            currCost, currDiff, r, c = heapq.heappop(heap)
+            currCost, r, c = heapq.heappop(heap)
 
             if r == len(grid) - 1 and c == len(grid[0]) - 1:
                 return currCost
@@ -27,7 +27,7 @@ class Solution:
                     visited.add((newRow, newCol))
                     if grid[newRow][newCol] <= currCost:
 
-                        heapq.heappush(heap, (currCost, currDiff, newRow, newCol))
+                        heapq.heappush(heap, (currCost, newRow, newCol))
                     else:
                         diff =  grid[newRow][newCol] - currCost
-                        heapq.heappush(heap, (currCost + diff, diff, newRow, newCol))
+                        heapq.heappush(heap, (currCost + diff, newRow, newCol))
