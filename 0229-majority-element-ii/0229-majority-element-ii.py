@@ -6,8 +6,9 @@ class Solution:
         if checkerLeng == 0:
             return list(set(nums))
         
-        output= set()
+        output = []
         temp = 1
+        
         for idx in range(1, len(nums)):
            
             if nums[idx] == nums[idx - 1]:
@@ -16,6 +17,13 @@ class Solution:
                 temp = 1
                 
             if temp > checkerLeng:
-                output.add(nums[idx])       
+                if output and output[-1] != nums[idx]:
+                    output.append(nums[idx])
+                elif not output:
+                    output.append(nums[idx])
             
         return list(output)
+    
+    
+    
+    
