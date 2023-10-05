@@ -1,4 +1,4 @@
 class Solution:
     def minimumDeletions(self, nums: List[int]) -> int:
-        maxi, mini = nums.index(max(nums)), nums.index(min(nums))
-        return min(max(mini,maxi) + 1, len(nums) - min(mini,maxi), len(nums) - max(mini,maxi) + min(mini,maxi) + 1)
+        # maxi, mini = ,
+        return min(max( nums.index(min(nums)),nums.index(max(nums))) + 1, len(nums) - min( nums.index(min(nums)),nums.index(max(nums))), len(nums) - max( nums.index(min(nums)),nums.index(max(nums))) + min( nums.index(min(nums)),nums.index(max(nums))) + 1)
