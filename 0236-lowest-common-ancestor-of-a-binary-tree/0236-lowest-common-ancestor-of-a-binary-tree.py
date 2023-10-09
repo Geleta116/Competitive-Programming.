@@ -19,30 +19,36 @@ class Solution:
                 
                 if node == p or node == q:
                     # print("1", node.val)
-                    return [node]
+                    return True
                 
                 return []
             
             left =[]
             right = []
+            
             if node.left:
                 left = dfs(node.left)
                 if left and (node == p or node == q):
                     self.out = node
-                    return []
+                    return False
+                
             if node.right:
                 right =  dfs(node.right)
                 if right and (node == p or node == q):
                     self.out = node
-                    return []
+                    return False
+                
             if left and right:
                 self.out = node
-                return []
+                return False
             
             if node == p or node == q:
-                return [node]
+                return True
             
-            return left + right
+            if left or right:
+                return True
+            return False
+        
         dfs(root)
         
         return self.out
