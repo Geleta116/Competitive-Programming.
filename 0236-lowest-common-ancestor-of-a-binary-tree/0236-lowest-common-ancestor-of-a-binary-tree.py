@@ -13,18 +13,18 @@ class Solution:
         def dfs(node):
             temp = node.val
             if not node:
-                return []
+                return False
             
             if not node.right and not node.left:
                 
                 if node == p or node == q:
-                    # print("1", node.val)
+                  
                     return True
                 
-                return []
+                return False
             
-            left =[]
-            right = []
+            left = False
+            right = False
             
             if node.left:
                 left = dfs(node.left)
