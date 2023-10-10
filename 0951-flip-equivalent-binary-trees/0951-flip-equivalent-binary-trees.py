@@ -15,19 +15,19 @@ class Solution:
         
         
         right = False
-        right1 = False
+        rightFlipped = False
         left = False
-        right2 =  False
+        rightFlipped =  False
         
         
-        left = self.flipEquiv(root1.left, root2.right)
-        left1 = self.flipEquiv(root1.left, root2.left)
+        leftFlipped = self.flipEquiv(root1.left, root2.right)
+        left = self.flipEquiv(root1.left, root2.left)
         
-        right = self.flipEquiv(root1.right, root2.left)
-        right1 = self.flipEquiv(root1.right, root2.right)
+        rightFlipped = self.flipEquiv(root1.right, root2.left)
+        right = self.flipEquiv(root1.right, root2.right)
         
         
-        return (right and left) or (right1 and left1)
+        return (right and left) or (rightFlipped and leftFlipped)
     
     
     
