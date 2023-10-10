@@ -1,7 +1,7 @@
 class Solution:
-    def minOperations(self, nnums: List[int]) -> int:
-        n = len(nnums)
-        nums =  list(set(nnums))
+    def minOperations(self, nums: List[int]) -> int:
+        n = len(nums)
+        nums =  list(set(nums))
         nums.sort()
         mini = n
         for idx in range(len(nums)):
