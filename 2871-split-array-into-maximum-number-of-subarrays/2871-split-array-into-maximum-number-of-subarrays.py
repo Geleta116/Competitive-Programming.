@@ -1,13 +1,8 @@
 class Solution:
     def maxSubarrays(self, nums: List[int]) -> int:
-       
-        
         temp = nums[:]
         for i in range(1, len(nums)):
             temp[i] = temp[i - 1] and temp[i]
-            
-        # if temp[-1] != 0:
-        #     return 1
         
         output = 0
         temp2 = nums[:]
