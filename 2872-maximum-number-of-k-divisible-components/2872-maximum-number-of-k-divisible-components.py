@@ -6,14 +6,11 @@ class Solution:
         for start, dest in edges:
             graph[start].append(dest)
             graph[dest].append(start)
-        graph['a'] = [0]
         
         self.visited = set([0])
         
         def dfs(node):
-            if node == 'a':
-                dfs(0)
-                return
+            
             self.visited.add(node)
             if len(graph[node]) == 1 and node != 0:
                 if values[node] % k == 0:
@@ -35,7 +32,7 @@ class Solution:
                 return False
             return True
                         
-        tstore = dfs('a')
+        tstore = dfs(0)
       
         out = 0
         for i in values:
