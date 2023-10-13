@@ -12,8 +12,8 @@ class Solution:
             store = self.exponentiation(base, power // 2)
             return store * store
         else:
-            store = self.exponentiation(base, (power - 1 )// 2)
-            return store * store * base
+            store = self.exponentiation(base, (power - 1 ))
+            return store * base
         
     def countOrders(self, n: int) -> int:
         return ((self.factorial(2 * n)) // self.exponentiation(2, n)) % (10**9 + 7)
