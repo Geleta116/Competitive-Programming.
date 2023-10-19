@@ -25,8 +25,6 @@ class Trie:
             curr = curr.children[ord(char) - ord('a')]
         curr.is_end =  True
         
-        
-
     def search(self, word: str) -> bool:
         self.curr = self.root
         temp = 0
