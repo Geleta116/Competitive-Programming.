@@ -4,39 +4,114 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    
+    def reverseLinkedList(self, head):
+        if not head:
+            return
+        
+        if not head.next:
+            return head
+        
+        prev = head
+        curr = head.next
+        while curr and curr.next:
+            later = curr.next
+            curr.next = prev
+            prev = curr
+            curr = later
+        curr.next = prev
+        head.next  = None
+        return curr
+        
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        stack1, stack2, curr1, curr2, head, carry = [], [], l1, l2, ListNode(), 0
-        out = []
-        while curr1 is not None:
-            stack1.append(curr1.val)
-            curr1 = curr1.next
-        while curr2 is not None:
-            stack2.append(curr2.val)
-            curr2 = curr2.next
-        l1, l2 = len(stack1), len(stack2)
-        for _ in range(max(l1, l2)):
-            a = 0 if l1 <= 0 else stack1.pop()
-            b = 0 if l2 <= 0 else stack2.pop()
-            l1 -= 1
-            l2 -= 1
-            sum = a+b+carry
-            carry = sum//10
-            out.append(sum%10)
-        if carry!=0:
-            out.append(carry)
-        out.reverse()
-        j = 0
-        curr = head = ListNode(0)
-        while j<len(out):
-            head.next = ListNode(out[j])
-            head = head.next
-            j+=1
         
-        return curr.next
+        dummy = ListNode(0)
+        curr = dummy
+        overflow = 0
+        currL1 = self.reverseLinkedList(l1)
+        currL2 = self.reverseLinkedList(l2)
+        
+        while currL1 and currL2:
             
+            currSum = currL1.val + currL2.val+ overflow
+            
+            if currSum < 10:
+                curr.next = ListNode(currSum)
+                overflow = 0
+                
+            else:
+                curr.next =  ListNode(currSum % 10)
+               
+                overflow = currSum // 10
+                
+            curr = curr.next
+            currL1 = currL1.next
+            currL2 = currL2.next
         
-             
+        while currL1:
+            currSum = currL1.val + overflow
+            if currSum < 10:
+                curr.next = ListNode(currSum) 
+                overflow = 0
+            else:
+                curr.next =  ListNode(currSum % 10)
+                
+                overflow = currSum // 10
+            
+            curr = curr.next
+            currL1 = currL1.next
+            
+        while currL2:
+            currSum = currL2.val + overflow
+      
+            if currSum < 10:
+                curr.next = ListNode(currSum)  
+                overflow = 0
+            else:
+                curr.next =  ListNode(currSum % 10)
+                
+                overflow = currSum // 10
+           
+            curr = curr.next
+            currL2 = currL2.next
+        
+        if overflow > 0:
+            curr.next = ListNode(overflow)
+        return self.reverseLinkedList(dummy.next)
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
                 
-       
             
+                
+                
+            
+        
