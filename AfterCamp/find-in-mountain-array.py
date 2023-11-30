@@ -7,6 +7,7 @@
 #    def length(self) -> int:
 
 class Solution:
+    
     def findInMountainArray(self, target: int, mountain_arr: 'MountainArray') -> int:
         
         left = 0
@@ -23,40 +24,37 @@ class Solution:
                 right = mid
             else:
                 left = mid
-                
-        mid_idx = right
-        left =  - 1
-        right = right + 1
-        while left + 1 < right:
-            mid = left + (right - left) // 2
+           
+        def Binary_Search(left, right, direction):
             
-            mid_val = mountain_arr.get(mid)
-            
-            if mid_val == target:
-                return mid
-            
-            if mid_val > target:
-                right = mid
-            else:
-                left = mid
-                
-        left = mid_idx - 1
-        right  = mountain_arr.length()
-        
-        while left + 1 < right:
-            mid = left + (right - left) // 2
-            
-            mid_val = mountain_arr.get(mid)
-            
-            if mid_val == target:
-                return mid
-            
-            if mid_val < target:
-                right = mid
-                
-            else:
-                left = mid
-                
+            while left + 1 < right:
+                mid = left + (right - left) // 2
+
+                mid_val = mountain_arr.get(mid)
+                if direction == 1:
+                    if mid_val == target:
+                        return mid
+
+                    if mid_val > target:
+                        right = mid
+                    else:
+                        left = mid
+                else:
+                    if mid_val == target:
+                        return mid
+
+                    if mid_val < target:
+                        right = mid
+
+                    else:
+                        left = mid
+            return -1
+        idx = Binary_Search(-1, right + 1, 1)
+        if idx != -1:
+            return idx
+        idx = Binary_Search(right - 1, mountain_arr.length(), -1)  
+        if idx != -1:
+            return idx           
         return -1
         
         
