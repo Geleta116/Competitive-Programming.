@@ -6,13 +6,29 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        #brute force approach interms of space
-        store = set()
+        # kans algorithm
+        if not head:
+            return False
+        slow = head
+        fast = head.next
         
-        while head:
-            if head in store:
+        while fast and fast.next:
+            if fast == slow:
                 return True
-            store.add(head)
-            head = head.next
+            
+            fast = fast.next.next
+            slow = slow.next
         return False
+        
+        
+        
+        #brute force approach interms of space
+#         store = set()
+        
+#         while head:
+#             if head in store:
+#                 return True
+#             store.add(head)
+#             head = head.next
+#         return False
         
