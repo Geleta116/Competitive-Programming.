@@ -10,5 +10,6 @@ class Solution:
         
         for i in large_int:
             output.append(int(i))
+            
         return output
         
