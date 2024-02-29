@@ -9,54 +9,30 @@ class Solution:
         if not root:
             return True
 
-        queue = deque([(root, 0)])
-        level_data = defaultdict(list)
-
+        queue = deque([root])
+        level = 0
+        
         while queue:
-            node = queue.popleft()
+           
+            prev_node = None
+            length = len(queue)
+          
             
-            curr_node, curr_level = node  # Unpack the tuple directly
-       
-            if curr_level % 2 == 0:
-                if curr_node.val % 2 == 0:
+            for _ in range(length):
+                curr = queue.popleft()
+                
+                if (level % 2 == 0 and ( curr.val % 2 == 0 or (prev_node is not None and prev_node >= curr.val))) or \
+                 (level % 2 != 0 and ( curr.val % 2 != 0 or (prev_node is not None and prev_node <= curr.val))):
+                    
                     return False
-            else:
-                if curr_node.val % 2 != 0:
-                    return False
-
-            if level_data[curr_level]:
-                if curr_level % 2 == 0:
-                    if curr_node.val % 2 == 0:
-                        return False
-
-                    if level_data[curr_level][-1] >= curr_node.val:
-                        return False
-                    else:
-                        level_data[curr_level].append(curr_node.val)
-                        if curr_node.left:
-                            queue.append((curr_node.left, curr_level + 1))
-                        if curr_node.right:  # Append tuple directly
-                            queue.append((curr_node.right, curr_level + 1))
-
-                else:
-                    if curr_node.val % 2 != 0:
-                        return False
-
-                    if level_data[curr_level][-1] <= curr_node.val:
-                        return False
-                    else:
-                        level_data[curr_level].append(curr_node.val)
-                        if curr_node.left:
-                            queue.append((curr_node.left, curr_level + 1))  # Append tuple directly
-                        if curr_node.right:
-                            queue.append((curr_node.right, curr_level + 1))
-            else:
-                level_data[curr_level].append(curr_node.val)
-                if curr_node.left:
-                    queue.append((curr_node.left, curr_level + 1))  # Append tuple directly
-                if curr_node.right:
-                    queue.append((curr_node.right, curr_level + 1))
-
+                
+                prev_node = curr.val
+                if curr.left:
+                    queue.append(curr.left)
+                if curr.right:
+                    queue.append(curr.right)
+            level += 1
+        
         return True
 
 
